@@ -1,0 +1,16 @@
+<apex:page controller="AccountController">
+  <apex:form >
+    <apex:pageBlock title="Account Search">
+      <apex:pageBlockSection >
+        <apex:inputText value="{!searchString}" />
+        <apex:commandButton value="Search" action="{!search}" rerender="resultsTable"/>
+      </apex:pageBlockSection>
+      <apex:pageBlockTable value="{!accounts}" var="acct" id="resultsTable">
+        <apex:column value="{!acct.Name}"/>
+        <apex:column value="{!acct.Phone}"/>
+        <apex:column value="{!acct.BillingCity}"/>
+         <apex:column value="{!acct.Rating}"/>
+      </apex:pageBlockTable>
+    </apex:pageBlock>
+  </apex:form> 
+</apex:page>

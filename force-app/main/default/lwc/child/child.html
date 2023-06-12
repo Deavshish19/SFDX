@@ -1,0 +1,15 @@
+<template>
+    <lightning-card title="Select Type" icon-name="custom:custom14">
+    <div class="slds-var-m-around_medium">  
+        <template if:true={showName}>   
+            <lightning-input type="text" label="Name"></lightning-input>
+        </template>
+        <template if:true={showPhone}> 
+            <lightning-input label="Phone"></lightning-input>
+        </template>
+        <template if:true={showEmail}> 
+            <lightning-input type="Email" label="Email"></lightning-input>
+        </template> 
+      </div>  
+    </lightning-card>
+</template>

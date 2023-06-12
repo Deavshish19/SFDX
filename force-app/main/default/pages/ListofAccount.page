@@ -1,0 +1,19 @@
+<apex:page controller="AccountController">
+  <apex:form >
+    <apex:pageBlock >
+      <apex:pageBlockTable value="{!accounts}" var="acct" id="accountTable">
+        <apex:column >
+          <apex:inputCheckbox value="{!acct.isSelected__c}" />
+        </apex:column>  
+        <apex:column value="{!acct.Name}"/>
+        <apex:column value="{!acct.Phone}"/>
+        <apex:column value="{!acct.BillingCity}"/>
+          <apex:column value="{!acct.Rating}"/>
+      </apex:pageBlockTable>
+      <apex:pageBlockButtons >
+        <apex:commandButton value="Delete Selected" action="{!deleteSelected}" rerender="accounts"/>
+      </apex:pageBlockButtons>
+      <apex:pageMessages />
+    </apex:pageBlock>
+  </apex:form> 
+</apex:page>

@@ -1,0 +1,10 @@
+<aura:component controller = "AccountList" implements="force:appHostable,flexipage:availableForAllPageTypes" access="global" >
+    <aura:attribute type="Account[]" name="acctList"/>
+    <aura:attribute name="gridColumns" type="List" />
+    <aura:attribute name="gridData" type="Object" />
+    <aura:attribute name="gridExpandedRows" type="Object" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <div class="slds-m-around_xx-large">
+        <lightning:treeGrid aura:id="accTree" columns="{!v.gridColumns}" data="{!v.gridData}" keyField="Id" layouType="Full"/>
+    </div>
+</aura:component>

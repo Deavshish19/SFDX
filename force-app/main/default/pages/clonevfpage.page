@@ -1,0 +1,13 @@
+<apex:page standardController="Account" extensions="CloneAccountController" >
+    <apex:form id="cloneForm">
+        <apex:outputText value="{!clonedAccount.Name}" />
+    	<apex:pageBlock title="Related Contacts">
+        	<apex:pageBlockTable value="{!clonedAccount.Contacts}" var="contact">
+            	<apex:column value="{!contact.Name}" />
+                <apex:column value="{!contact.Phone}" />
+                <apex:column value="{!contact.Email}" />
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+    
+</apex:page>

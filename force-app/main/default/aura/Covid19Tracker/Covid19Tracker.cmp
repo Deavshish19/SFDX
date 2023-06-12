@@ -1,0 +1,66 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes" access="global" controller="Covid19Controller" >
+	<aura:attribute name="confirmed" type="String"></aura:attribute>
+    <aura:attribute name="newConfirmed" type="String"></aura:attribute>
+    <aura:attribute name="recovered" type="String"></aura:attribute>
+    <aura:attribute name="deaths" type="String"></aura:attribute>
+    <aura:attribute name="spinner" type="boolean" default="FALSE"/>
+    
+    <aura:attribute name="data" type="Object"/>
+    <aura:attribute name="columns" type="List"/>
+    
+    <aura:handler name="init" value="{! this }" action="{! c.doInit }"></aura:handler> 
+    <!--aura handler with waiting and donewaiting events-->
+    <aura:handler event="aura:waiting" action="{!c.showSpinner}"/>
+    <aura:handler event="aura:doneWaiting" action="{!c.hideSpinner}"/>
+     
+    
+    
+    <div class="slds-page-header">
+    	<div class="slds-grid">
+        	<div class="slds-col slds-size_11-of-12">
+    			<span style="font-size: 24px; ">COVID-19 TRACKER APP</span>
+  			</div>
+  			<div class="slds-col slds-size_1-of-12">
+    			<span><lightning:buttonIcon iconName="utility:refresh" variant="brand" onclick="{!c.doInt}" alternativeText="Refresh" title="Refresh" /></span>
+  			</div>
+        </div>
+    </div>
+    
+    <aura:if isTrue="{!v.spinner}">
+        <div aura:id="spinnerId" class="slds-spinner_container">
+            <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                <span class="slds-assistive-text">Loading...</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>
+    </aura:if>
+    
+    <div class="slds-var-m-around_medium" style="font-size: 20px;">
+    <lightning:tabset> 
+        <lightning:tab label="LIVE DATA">
+            <div  class="slds-grid">
+                <div class="slds-col slds-size_3-of-12" style="background-color:Orange ; padding:10px;">
+                	<span style="color:White; font-size:18px;">TOTAL CONFIRMED: <b style="font-size:17px">{!v.confirmed}</b></span>
+                </div>
+                <div class="slds-col slds-size_3-of-12" style="background-color:Blue;padding:10px;;">
+                	<span style="color:White; font-size:18px;">NEW CONFIRMED: <b style="font-size:17px">{!v.newConfirmed}</b></span>
+                </div>
+                <div class="slds-col slds-size_3-of-12" style="background-color:Green;padding:10px">
+                	<span style="color:White; font-size:18px;">TOTAL RECOVERED: <b style="font-size:17px">{!v.recovered}</b></span>
+                </div>
+                <div class="slds-col slds-size_3-of-12" style="background-color:Gray;padding:10px;">
+                	<span style="color:White; font-size:18px;">TOTAL DEATH: <b style="font-size:17px">{!v.deaths}</b></span>
+                </div>
+            </div>
+        </lightning:tab>
+    </lightning:tabset>
+    </div>  
+    <div style="height: 100%;padding:1%;">
+        <lightning:datatable
+                keyField="id"
+                data="{!v.data}"
+                columns="{!v.columns}"
+                hideCheckboxColumn="true"/>
+    </div>
+</aura:component>

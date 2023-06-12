@@ -1,0 +1,16 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes" access="global" >
+    <aura:attribute name="myVal" type="String" />
+    <!-- This line to show modal window from controller --> 
+    <lightning:overlayLibrary aura:id="overlayLib"/>
+    <div class="slds-page-header slds-col slds-has-flexi-truncate slds-media__body">
+        <div class="slds-grid slds-grid_pull-padded-medium">
+            <div class="slds-col slds-p-horizontal_medium">
+                <lightning:input label="Name" placeholder="Enter name" name="myname" value="{!v.myVal}" required="true" />
+                <div class="slds-align_absolute-center">
+                    <lightning:button name="modal" class="MyBtn" label="Show Modal" onclick="{!c.handleShowModal}"/>
+                </div>
+            </div>
+            <div class="slds-col slds-p-horizontal_medium"></div>
+        </div>
+    </div>
+</aura:component>

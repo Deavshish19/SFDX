@@ -1,0 +1,33 @@
+<apex:page controller="EmployeeRecords" >
+    <style>
+        .container {
+            display: flex;
+            align-items: center;
+        	margin : 10px 50px;
+        }
+        
+        .container input[type="text"] {
+            margin-right: 10px;
+        }
+    </style>
+    <apex:form >
+        <div class="container">
+            <apex:outputLabel for="myInputText" value="Search Employee:" />
+            <apex:inputText id="myInputText" value="{!searchTerm}" label="Search Employee"/>
+    		<apex:commandButton value="Search" action="{!SearchEmployee}"/>
+        </div>   
+        
+        <apex:pageBlock id="employeeTable">
+        	<apex:pageBlockTable value="{!filteredList}" var="emp">
+            	<apex:column value="{!emp.Name}"/>
+                <apex:column value="{!emp.Email__c}"/>
+                <apex:column value="{!emp.Contact_Number__c}"/>
+                <apex:column value="{!emp.Department__c}"/>
+                <apex:column value="{!emp.Position__c}"/>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+        
+        <apex:commandButton value="Add new Employee" action="{!addEmployee}"/>
+    </apex:form>
+    
+</apex:page>

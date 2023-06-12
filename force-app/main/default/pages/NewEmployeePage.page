@@ -1,0 +1,56 @@
+<apex:page controller="EmployeeRecords" >
+    <style>
+        .form-container {
+            display: grid;
+            gap: 10px;
+        	width: 200px;
+        	font-size: 20px;
+        	margin: 20px 20px 20px 650px;
+        }
+        
+        .form-container output[type="Label"] {
+            grid-column: 1 / 2;
+            text-align: right;
+        	font-size: 20px;
+        }
+        
+        .button-container {
+            grid-column: 2 / span 2;
+        	width: 200px;
+        	font-size: 20px;
+        	margin: 20px 20px 20px 720px;
+        }
+    </style>
+    
+    <apex:form >
+        <div class="form-container">
+            <apex:outputLabel for="myInputText" value="Name" />	
+        	<apex:inputField label="Name" value="{!employee.Name}" />
+        </div>
+        
+        <div class="form-container">
+            <apex:outputLabel for="myInputText" value="Email" />
+        	<apex:inputField label="Email" value="{!employee.Email__c}" />
+        </div>
+        
+        <div class="form-container">
+           <apex:outputLabel for="myInputText" value="Contact Number" />
+  		   <apex:inputField label="Phone" value="{!employee.Contact_Number__c}" /> 
+        </div >
+        
+        <div class="form-container">
+            <apex:outputLabel for="myInputText" value="Department" />
+        	<apex:inputField label="Department" value="{!employee.Department__c}" />
+        </div>
+        
+      	<div class="form-container">
+			<apex:outputLabel for="myInputText" value="Position" />
+        	<apex:inputField label="Position" value="{!employee.Position__c}" />            
+        </div>
+        
+        <div class="button-container">
+            <apex:commandButton value="Save" action="{!saveEmployee}" />
+        </div>
+       	
+    </apex:form>
+</apex:page>

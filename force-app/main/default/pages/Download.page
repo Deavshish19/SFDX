@@ -1,0 +1,7 @@
+<apex:page standardController="Account" recordSetVar="accounts" extensions="DownloadListViewController">
+
+    <apex:form >
+        <apex:commandLink value="Download List View" action="{!downloadListView}" />
+    </apex:form>
+
+</apex:page>

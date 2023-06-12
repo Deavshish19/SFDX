@@ -1,0 +1,41 @@
+<aura:component implements="force:appHostable" controller="contactAuraController">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <aura:attribute name="contacts" type="Contact[]"></aura:attribute>
+    <aura:attribute name="contactList" type="Contact[]"></aura:attribute>
+    <aura:attribute name="totalContacts" type="Integer"></aura:attribute>
+
+    <div class="slds-page-header slds-page-header_object-home">
+        <lightning:layout>
+            <lightning:layoutItem>
+                <lightning:icon iconName="standard:contact" />
+            </lightning:layoutItem>
+            <lightning:layoutItem class="slds-m-left_small">
+                <p class="slds-text-title_caps slds-line-height_reset">Contacts</p>
+                <h1 class="slds-page-header__title slds-p-right_x-small">Contact
+                    Viewer</h1>
+            </lightning:layoutItem>
+        </lightning:layout>
+        <lightning:layout>
+            <lightning:layoutItem>
+                <p class="slds-text-body_small">{!v.totalContacts} Contacts • View
+                    Contacts Based on Lead Sources</p>
+            </lightning:layoutItem>
+        </lightning:layout>
+    </div>
+    <lightning:layout>
+        <lightning:layoutItem padding="horizontal-medium">
+            <lightning:select aura:id="select" label="Lead Source" name="source" onchange="{!c.handleSelect}"
+                class="slds-m-bottom_medium">
+                <option value="">---Select load Source---</option>
+                <option value="Referral" text="Referral" />
+                <option value="Social Media" text="Social Media" />
+                <option value="All" text="All" />
+            </lightning:select>
+            <aura:iteration var="contact" items="{!v.contacts}">
+                <c:ContactsAura contact="{!contact}"/>
+            </aura:iteration>
+        </lightning:layoutItem>
+    </lightning:layout>
+
+</aura:component>

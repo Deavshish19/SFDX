@@ -1,0 +1,23 @@
+<template>
+    <lightning-card title="Create Transaction Record">
+        <div class="slds-p-around_medium">
+        <lightning-record-edit-form object-api-name="Transaction__c" onsubmit={handleSubmit} onsuccess={handleSuccess}>
+            <div class="slds-col slds-size_1-of-2">
+                <lightning-input-field field-name="Name" required></lightning-input-field>
+            </div>
+            <div class="slds-col slds-size_1-of-2">
+                <lightning-input-field field-name="Account__c" required ></lightning-input-field>
+            </div>
+            <div class="slds-col slds-size_1-of-2">
+                <lightning-input-field field-name="Success_Code__c" data-field="Success_Code__c"  onchange={handleSuccessCodeChange} required></lightning-input-field>
+            </div>
+            <div class="slds-col slds-size_1-of-2">
+                <lightning-input-field field-name="Message__c" value={message} readonly></lightning-input-field>
+            </div>
+            <div class="slds-m-top_medium">    
+                <lightning-button variant="brand" label="Save" type="submit"></lightning-button>
+            </div>    
+        </lightning-record-edit-form>
+        </div> 
+    </lightning-card>
+</template>
